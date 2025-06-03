@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 20:00:23 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/02 23:13:46 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/03 22:31:03 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,25 @@ t_camera	camera(t_canvas *canvas, t_vec_point3 orig)
 	t_camera	cam;
 	double		focal_len;
 	double		viewport_height;
+	double		fov = 90 * (M_PI / 180.0);
+	t_vec3		vec_up = vec3(0, 1, 0);
+	t_vec3		vec_dir = vec3(0, 0, 1);
+	t_vec3		u, v;
+	double		h;
 
-	viewport_height = 2.0;
 	focal_len = 1.0;
+	u = vec_unit(vec_cross(vec_up, vec_dir));
+	v = vec_cross(vec_dir, u);
+	viewport_height = tan(fov / 2) * focal_len;
 	cam.orig = orig;
 	cam.viewport_h = viewport_height;
 	cam.viewport_w = viewport_height * canvas->aspect_ratio;
 	cam.focal_len = focal_len;
-	cam.horizontal = vec3(cam.viewport_w, 0, 0);
-	cam.vertical = vec3(0, cam.viewport_h, 0);
+	cam.horizontal = vec_mult(u, cam.viewport_w);
+	cam.vertical = vec_mult(vec_mult(v, 1), cam.viewport_h);
 	cam.left_bottom = two_vec_minus(two_vec_minus(two_vec_minus(cam.orig, \
 		vec_div(cam.horizontal, 2)), vec_div(cam.vertical, 2)), \
-		vec3(0, 0, focal_len));
+		vec_mult(vec_dir, focal_len));
 	return (cam);
 }
 
@@ -56,13 +63,14 @@ void	scene_init(t_scene *scene, int	fd, t_mlx *data)
 	t_object	*world;
 	t_object	*lights;
 	double		ka;
+	double		R = cos(M_PI / 4);
 
 	(void)fd;
 	mlx_create(data);
 	scene->canvas = canvas(1920, 1080);
 	scene->camera = camera(&scene->canvas, vec_point3(0, 0, 1));
-	world = object_init(SP, sphere_init(vec_point3(-2, 0, -5), 2), color3(0.5, 0, 0));
-    object_add(&world, object_init(SP, sphere_init(vec_point3(2, 0, -5), 2), color3(0, 0.5, 0)));
+	world = object_init(SP, sphere_init(vec_point3(-1, 0, -5), 1), color3(0.5, 0, 0));
+    object_add(&world, object_init(SP, sphere_init(vec_point3(1, 0, -5), 1), color3(0, 0.5, 0)));
     object_add(&world, object_init(SP, sphere_init(vec_point3(0, -1000, 0), 990), color3(1, 1, 1)));
 	scene->world = world;
 	lights = object_init(LIGHT_POINT, light_point(vec_point3(0, 5, 0), color3(1, 1, 1), 0.5), color3(0, 0, 0));

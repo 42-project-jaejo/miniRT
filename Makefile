@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+         #
+#    By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 16:11:45 by jaejo             #+#    #+#              #
-#    Updated: 2025/06/02 23:19:45 by jaejo            ###   ########.fr        #
+#    Updated: 2025/06/03 21:29:41 by seungsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS =
-#CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -g
+# CFLAGS = -Wall -Wextra -Werror -I.
 
 NAME = minirt
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:47:08 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/02 23:54:55 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/03 22:32:56 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define EPSILON 1e-6 // 0.000001
 # define LUMEN 11
 # define KEY_ESC 65307
+# define M_PI 3.14159265358979323846
 
 # include "./ft_printf/ft_printf.h"
 # include "./free/free.h"
