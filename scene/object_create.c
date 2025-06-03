@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 17:19:48 by jaejo             #+#    #+#             */
-/*   Updated: 2025/05/28 00:10:11 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/03 22:45:09 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,32 @@ t_light	*light_point(t_vec_point3 light_origin, t_color3 light_color, double bri
 	light->light_color = light_color;
 	light->bright_ratio = bright_ratio;
 	return (light);
+}
+
+t_plane	*plane_init(t_vec_point3 point, t_vec3 dir)
+{
+	t_plane *pl;
+
+	pl = (t_plane *)malloc(sizeof(t_plane));
+	if (!pl)
+		return (NULL);
+	pl->point = point;
+	pl->normal = dir;
+	return (pl);
+}
+
+t_cylinder	*cylinder_init(t_vec_point3 center, t_vec3 normal, double t_radius, double b_radius)
+{
+	t_cylinder	*cy;
+
+	cy = (t_cylinder *)malloc(sizeof(t_cylinder));
+	if (!cy)
+		return (cy);
+	cy->normal = normal;
+	cy->center = center;
+	cy->top_radius = t_radius;
+	cy->top_radius2 = t_radius * t_radius;
+	cy->bottom_radius = b_radius;
+	cy->bottom_radius2 = b_radius * b_radius;
+	return (cy);
 }

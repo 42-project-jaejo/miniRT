@@ -6,7 +6,7 @@
 #    By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 16:11:45 by jaejo             #+#    #+#              #
-#    Updated: 2025/06/03 21:29:41 by seungsch         ###   ########.fr        #
+#    Updated: 2025/06/03 23:02:39 by seungsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ TRACE_SRCS = ./trace/trace.c ./trace/hit_sphere.c ./trace/phong_lighting.c \
 
 SCENE_SRCS = ./scene/scene.c ./scene/object_utils.c ./scene/object_create.c \
 			./scene/file_init.c ./scene/file_data_check.c ./scene/file_check_utils.c \
+			./scene/data_init.c ./scene/data_utils.c \
 
 VEC_UTILS_SRCS = ./vec/make_vec_utils.c ./vec/vec_minus_utils.c ./vec/vec_mult_div_utils.c \
 				 ./vec/vec_operator_utils.c ./vec/vec_plus_utils.c \

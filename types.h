@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:47:08 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/03 22:32:56 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/03 23:02:20 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_camera
 	t_vec3			horizontal;
 	t_vec3			vertical;
 	t_vec3			cam_dir;
+	double			fov;
 	double			focal_len;
 	t_vec_point3	left_bottom;
 }	t_camera;
@@ -85,6 +86,23 @@ typedef struct s_sphere
 	double			radius;
 	double			radius2;
 }	t_sphere;
+
+typedef struct s_plane
+{
+	t_vec_point3	point;
+	t_vec3			normal;
+	t_color3		color;
+}	t_plane;
+
+typedef struct s_cylinder
+{
+	t_vec_point3	center;
+	t_vec3			normal;
+	double			top_radius;
+	double			top_radius2;
+	double			bottom_radius;
+	double			bottom_radius2;
+}	t_cylinder;
 
 typedef struct s_hit_record
 {
