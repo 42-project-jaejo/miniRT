@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 17:19:48 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/03 22:45:09 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/04 00:25:27 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ t_sphere	*sphere_init(t_vec_point3 center, double radius)
 	return (sp);
 }
 
-t_light	*light_point(t_vec_point3 light_origin, t_color3 light_color, double bright_ratio)
+t_light	*light_point(t_vec_point3 light_origin, t_color3 light_color,
+		double bright_ratio)
 {
 	t_light	*light;
 
@@ -54,7 +55,7 @@ t_light	*light_point(t_vec_point3 light_origin, t_color3 light_color, double bri
 
 t_plane	*plane_init(t_vec_point3 point, t_vec3 dir)
 {
-	t_plane *pl;
+	t_plane	*pl;
 
 	pl = (t_plane *)malloc(sizeof(t_plane));
 	if (!pl)
@@ -64,7 +65,8 @@ t_plane	*plane_init(t_vec_point3 point, t_vec3 dir)
 	return (pl);
 }
 
-t_cylinder	*cylinder_init(t_vec_point3 center, t_vec3 normal, double t_radius, double b_radius)
+t_cylinder	*cylinder_init(t_vec_point3 center, t_vec3 normal, double t_radius,
+		double b_radius)
 {
 	t_cylinder	*cy;
 

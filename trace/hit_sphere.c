@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 22:50:59 by jaejo             #+#    #+#             */
-/*   Updated: 2025/05/28 00:14:21 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/04 00:27:54 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./trace.h"
 
-static void    set_face_normal(t_ray *r, t_hit_record *rec)
+static void	set_face_normal(t_ray *r, t_hit_record *rec)
 {
 	rec->front_face = vec_dot(r->dir, rec->normal) < 0;
 	if (rec->front_face)
@@ -23,14 +23,14 @@ static void    set_face_normal(t_ray *r, t_hit_record *rec)
 
 t_bool	hit_sphere(t_object *world, t_ray *ray, t_hit_record *rec)
 {
-	t_vec3	oc;
-	double	a;
-	double	half_b;
-	double	c;
-	double	discriminant;
-	double	sqrtd;
-	double	root;
-	t_sphere *sp;
+	t_vec3		oc;
+	double		a;
+	double		half_b;
+	double		c;
+	double		discriminant;
+	double		sqrtd;
+	double		root;
+	t_sphere	*sp;
 
 	sp = world->element;
 	oc = two_vec_minus(ray->orig, sp->center);

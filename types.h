@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:47:08 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/03 23:02:20 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/04 00:22:41 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define KEY_ESC 65307
 # define M_PI 3.14159265358979323846
 
-# include "./ft_printf/ft_printf.h"
 # include "./free/free.h"
+# include "./ft_printf/ft_printf.h"
 
 typedef int				t_bool;
 typedef int				t_object_type;
@@ -35,110 +35,109 @@ typedef struct s_vec3	t_vec3;
 typedef struct s_vec3	t_vec_point3;
 typedef struct s_vec3	t_color3;
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
-	int		bpp;
-	int		endian;
-	int		width;
-	void	*mlx;
-	void	*win;
-	void	*img;
-	void	*img_addr;
-}	t_mlx;
+	int					bpp;
+	int					endian;
+	int					width;
+	void				*mlx;
+	void				*win;
+	void				*img;
+	void				*img_addr;
+}						t_mlx;
 
-
-struct	s_vec3
+struct					s_vec3
 {
-	double	x;
-	double	y;
-	double	z;
+	double				x;
+	double				y;
+	double				z;
 };
 
 typedef struct s_ray
 {
-	t_vec_point3	orig;
-	t_vec3			dir;
-}	t_ray;
+	t_vec_point3		orig;
+	t_vec3				dir;
+}						t_ray;
 
 typedef struct s_camera
 {
-	t_vec_point3	orig;
-	double			viewport_h;
-	double			viewport_w;
-	t_vec3			horizontal;
-	t_vec3			vertical;
-	t_vec3			cam_dir;
-	double			fov;
-	double			focal_len;
-	t_vec_point3	left_bottom;
-}	t_camera;
+	t_vec_point3		orig;
+	double				viewport_h;
+	double				viewport_w;
+	t_vec3				horizontal;
+	t_vec3				vertical;
+	t_vec3				cam_dir;
+	double				fov;
+	double				focal_len;
+	t_vec_point3		left_bottom;
+}						t_camera;
 
 typedef struct s_canvas
 {
-	int		width;
-	int		height;
-	double	aspect_ratio;
-}	t_canvas;
+	int					width;
+	int					height;
+	double				aspect_ratio;
+}						t_canvas;
 
 typedef struct s_sphere
 {
-	t_vec_point3	center;
-	double			radius;
-	double			radius2;
-}	t_sphere;
+	t_vec_point3		center;
+	double				radius;
+	double				radius2;
+}						t_sphere;
 
 typedef struct s_plane
 {
-	t_vec_point3	point;
-	t_vec3			normal;
-	t_color3		color;
-}	t_plane;
+	t_vec_point3		point;
+	t_vec3				normal;
+	t_color3			color;
+}						t_plane;
 
 typedef struct s_cylinder
 {
-	t_vec_point3	center;
-	t_vec3			normal;
-	double			top_radius;
-	double			top_radius2;
-	double			bottom_radius;
-	double			bottom_radius2;
-}	t_cylinder;
+	t_vec_point3		center;
+	t_vec3				normal;
+	double				top_radius;
+	double				top_radius2;
+	double				bottom_radius;
+	double				bottom_radius2;
+}						t_cylinder;
 
 typedef struct s_hit_record
 {
-	t_vec_point3	p;
-	t_vec3			normal;
-	double			tmin;
-	double			tmax;
-	double			t;
-	t_bool			front_face;
-	t_color3		albedo;
-}	t_hit_record;
+	t_vec_point3		p;
+	t_vec3				normal;
+	double				tmin;
+	double				tmax;
+	double				t;
+	t_bool				front_face;
+	t_color3			albedo;
+}						t_hit_record;
 
-typedef struct	s_object
+typedef struct s_object
 {
-    t_object_type	type;
-    void			*element;
-	t_color3		albedo;
-    void			*next;
-}	t_object;
+	t_object_type		type;
+	void				*element;
+	t_color3			albedo;
+	void				*next;
+}						t_object;
 
-typedef struct	s_light
+typedef struct s_light
 {
-    t_vec_point3	origin;
-    t_color3		light_color;
-    double			bright_ratio;
-}	t_light;
+	t_vec_point3		origin;
+	t_color3			light_color;
+	double				bright_ratio;
+}						t_light;
 
-typedef struct	s_scene
+typedef struct s_scene
 {
-	t_canvas		canvas;
-	t_camera		camera;
-	t_object		*world;
-	t_object		*light;
-	t_color3		ambient;
-	t_ray			ray;
-	t_hit_record	rec;
-}	t_scene;
+	t_canvas			canvas;
+	t_camera			camera;
+	t_object			*world;
+	t_object			*light;
+	t_color3			ambient;
+	t_ray				ray;
+	t_hit_record		rec;
+}						t_scene;
 
 #endif

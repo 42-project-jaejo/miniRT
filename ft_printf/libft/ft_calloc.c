@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:08:09 by jaejo             #+#    #+#             */
-/*   Updated: 2024/10/06 22:46:36 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/04 00:26:23 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	mem = size * nmemb;
 	if (max / nmemb < size)
 		return (NULL);
-	i = malloc (mem);
+	i = malloc(mem);
 	if (i == NULL)
 		return (NULL);
 	return (ft_memset(i, 0, size * nmemb));
-}	
+}

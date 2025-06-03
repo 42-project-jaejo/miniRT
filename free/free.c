@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 21:40:56 by jaejo             #+#    #+#             */
-/*   Updated: 2025/05/30 22:24:29 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/04 00:35:17 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	split_free(char **data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (data[i])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 20:20:37 by jaejo             #+#    #+#             */
-/*   Updated: 2024/10/28 21:58:06 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/04 00:26:28 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*ft_nil(unsigned long long temp)
 	nbr = NULL;
 	if (temp == 0)
 	{
-		nbr = (char *)malloc (sizeof(char) * 6);
+		nbr = (char *)malloc(sizeof(char) * 6);
 		if (nbr == 0)
 			return (NULL);
 		nbr[0] = '(';
@@ -56,7 +56,7 @@ static char	*ft_hexnbr(unsigned long long temp)
 	if (temp == 0)
 		return (ft_nil(temp));
 	i = len(temp);
-	nbr = (char *)malloc (sizeof(char) * i + 1);
+	nbr = (char *)malloc(sizeof(char) * i + 1);
 	if (nbr == 0)
 		return (NULL);
 	nbr[i] = '\0';
@@ -81,7 +81,7 @@ static int	ft_onlyflag_p(t_setting flag, char *p, int i)
 	if (flag.width > i && flag.minus == 0)
 	{
 		while (flag.width - i++ > 0)
-			write (1, " ", 1);
+			write(1, " ", 1);
 		ft_print_address(p);
 		ft_print_istr(p);
 		return (flag.width);
@@ -91,7 +91,7 @@ static int	ft_onlyflag_p(t_setting flag, char *p, int i)
 		ft_print_address(p);
 		ft_print_istr(p);
 		while (flag.width - i++ > 0)
-			write (1, " ", 1);
+			write(1, " ", 1);
 		return (flag.width);
 	}
 	else
@@ -112,4 +112,4 @@ int	ft_print_p(t_setting flag, va_list ap)
 	if (flag.dot == 0 && flag.zero == 0)
 		return (ft_onlyflag_p(flag, p, i));
 	return (0);
-}	
+}

@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 20:11:06 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/03 23:35:20 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/04 00:32:49 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_object	*ft_light_intit(char **data)
 	brightness_ratio = ft_strtod(data[2], 0);
 	point = ft_char_to_vec(data[1]);
 	color = ft_char_to_vec(data[3]);
-	lights = light_point(point, color, brightness_ratio), color3(0, 0, 0);
+	lights = light_point(point, color, brightness_ratio);
 	obj = object_init(LIGHT_POINT, lights, color3(0, 0, 0));
 	return (obj);
 }
@@ -66,8 +66,8 @@ t_object	*ft_cy_init(char **data)
 	color = ft_char_to_vec(data[5]);
 	center = ft_char_to_vec(data[1]);
 	normal = ft_char_to_vec(data[2]);
-	obj = object_init(CY, \
-		cylinder_init(center, normal, ft_strtod(data[4], 0), ft_strtod(data[3], 0)), color);
+	obj = object_init(CY, cylinder_init(center, normal, ft_strtod(data[4], 0),
+				ft_strtod(data[3], 0)), color);
 	return (obj);
 }
 
@@ -77,7 +77,7 @@ t_camera	ft_camera_init(t_canvas *canvas, char **data)
 	t_vec3		vec_up;
 	t_vec3		u;
 	t_vec3		v;
-	
+
 	cam.focal_len = 1.0;
 	cam.cam_dir = ft_char_to_vec(data[2]);
 	vec_up = vec3(1, 0, 0);
@@ -89,8 +89,8 @@ t_camera	ft_camera_init(t_canvas *canvas, char **data)
 	cam.viewport_w = cam.viewport_h * canvas->aspect_ratio;
 	cam.horizontal = vec_mult(u, cam.viewport_w);
 	cam.vertical = vec_mult(vec_mult(v, 1), cam.viewport_h);
-	cam.left_bottom = two_vec_minus(two_vec_minus(two_vec_minus(cam.orig, \
-		vec_div(cam.horizontal, 2)), vec_div(cam.vertical, 2)), \
-		vec_mult(cam.cam_dir, -cam.focal_len));
+	cam.left_bottom = two_vec_minus(two_vec_minus(two_vec_minus(cam.orig,
+					vec_div(cam.horizontal, 2)), vec_div(cam.vertical, 2)),
+			vec_mult(cam.cam_dir, -cam.focal_len));
 	return (cam);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_check_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 16:09:21 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/01 22:41:04 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/04 00:25:46 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,12 @@ char	**minirt_data(int fd)
 
 t_bool	object_data_check(char *data, int *flag, int size)
 {
-	static int a_flag = 0;
-	static int l_flag = 0;
-	static int c_flag = 0;
+	static int	a_flag = 0;
+	static int	l_flag = 0;
+	static int	c_flag = 0;
 
-	if ((!ft_strncmp(data, "cy", 3) && size == 6) || \
-		(!ft_strncmp(data, "pl", 3) && size == 4) || \
-		(!ft_strncmp(data, "sp", 3) && size == 4))
+	if ((!ft_strncmp(data, "cy", 3) && size == 6) || (!ft_strncmp(data, "pl", 3)
+			&& size == 4) || (!ft_strncmp(data, "sp", 3) && size == 4))
 		return (TRUE);
 	else if (!ft_strncmp(data, "A", 2) && size == 3)
 		a_flag++;
