@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 20:11:06 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/03 22:49:56 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/03 23:35:20 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,23 @@ t_object	*ft_cy_init(char **data)
 t_camera	ft_camera_init(t_canvas *canvas, char **data)
 {
 	t_camera	cam;
-
-	cam.fov = ft_strtod(data[3], 0) * (3.14 / 180.0);
-	cam.orig = ft_char_to_vec(data[1]);
-	cam.cam_dir = ft_char_to_vec(data[2]);
-	cam.viewport_h = 2.0;
-	cam.viewport_w = cam.viewport_h * canvas->aspect_ratio;
+	t_vec3		vec_up;
+	t_vec3		u;
+	t_vec3		v;
+	
 	cam.focal_len = 1.0;
-	cam.horizontal = vec3(cam.viewport_w, 0, 0);
-	cam.vertical = vec3(0, cam.viewport_h, 0);
+	cam.cam_dir = ft_char_to_vec(data[2]);
+	vec_up = vec3(1, 0, 0);
+	u = vec_unit(vec_cross(cam.cam_dir, vec_up));
+	v = vec_cross(cam.cam_dir, u);
+	cam.fov = ft_strtod(data[3], 0) * (M_PI / 180.0);
+	cam.orig = ft_char_to_vec(data[1]);
+	cam.viewport_h = tan(cam.fov / 2) * cam.focal_len;
+	cam.viewport_w = cam.viewport_h * canvas->aspect_ratio;
+	cam.horizontal = vec_mult(u, cam.viewport_w);
+	cam.vertical = vec_mult(vec_mult(v, 1), cam.viewport_h);
 	cam.left_bottom = two_vec_minus(two_vec_minus(two_vec_minus(cam.orig, \
 		vec_div(cam.horizontal, 2)), vec_div(cam.vertical, 2)), \
-		vec3(0, 0, cam.focal_len));
+		vec_mult(cam.cam_dir, -cam.focal_len));
 	return (cam);
 }

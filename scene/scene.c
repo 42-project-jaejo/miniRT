@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 20:00:23 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/03 23:04:13 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/03 23:12:05 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,34 +31,7 @@ t_canvas	canvas(int width, int height)
 	return (canvas);
 }
 
-t_camera	camera(t_canvas *canvas, t_vec_point3 orig)
-{
-	t_camera	cam;
-	double		focal_len;
-	double		viewport_height;
-	double		fov = 90 * (M_PI / 180.0);
-	t_vec3		vec_up = vec3(0, 1, 0);
-	t_vec3		vec_dir = vec3(0, 0, 1);
-	t_vec3		u, v;
-	double		h;
-
-	focal_len = 1.0;
-	u = vec_unit(vec_cross(vec_up, vec_dir));
-	v = vec_cross(vec_dir, u);
-	viewport_height = tan(fov / 2) * focal_len;
-	cam.orig = orig;
-	cam.viewport_h = viewport_height;
-	cam.viewport_w = viewport_height * canvas->aspect_ratio;
-	cam.focal_len = focal_len;
-	cam.horizontal = vec_mult(u, cam.viewport_w);
-	cam.vertical = vec_mult(vec_mult(v, 1), cam.viewport_h);
-	cam.left_bottom = two_vec_minus(two_vec_minus(two_vec_minus(cam.orig, \
-		vec_div(cam.horizontal, 2)), vec_div(cam.vertical, 2)), \
-		vec_mult(vec_dir, focal_len));
-	return (cam);
-}
-
-void	scene_init(t_scene *scene, int	fd, t_mlx *data)
+void	scene_init(t_scene *scene, int	fd, t_mlx *mlx_data)
 {
 	t_object	*world;
 	t_object	*lights;
