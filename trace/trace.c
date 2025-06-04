@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trace.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:38:20 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 00:31:48 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/04 21:40:13 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_ray	ray_primary(t_camera *cam, double u, double v)
 	return (ray);
 }
 
-static t_hit_record	record_init(void)
+t_hit_record	record_init(void)
 {
 	t_hit_record	record;
 

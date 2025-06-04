@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:47:08 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 00:22:41 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/05 01:03:03 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,24 @@
 # define SP 5
 # define PL 6
 # define CY 7
+# define C 8
+# define L 9
 # define LIGHT_POINT 10
 # define EPSILON 1e-6 // 0.000001
 # define LUMEN 11
 # define KEY_ESC 65307
+# define ONE 49
+# define TWO 50
+# define THREE 51
+# define KEY_UP 117
+# define KEY_DOWN 100
+# define KEY_LEFT 65363
+# define KEY_RIGHT 65361
+# define KEY_BACK 65362
+# define KEY_GO 65364
+
 # define M_PI 3.14159265358979323846
 
-# include "./free/free.h"
 # include "./ft_printf/ft_printf.h"
 
 typedef int				t_bool;
@@ -131,6 +142,7 @@ typedef struct s_light
 
 typedef struct s_scene
 {
+	void				*now;
 	t_canvas			canvas;
 	t_camera			camera;
 	t_object			*world;
@@ -138,6 +150,7 @@ typedef struct s_scene
 	t_color3			ambient;
 	t_ray				ray;
 	t_hit_record		rec;
+	t_mlx				mlx_data;
 }						t_scene;
 
 #endif

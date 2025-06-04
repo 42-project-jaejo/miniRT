@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 20:00:23 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 00:32:14 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/05 00:58:59 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	scene_init(t_scene *scene, int fd, t_mlx *mlx_data)
 	char		*data;
 	char		**data_split;
 
+	world = NULL;
 	mlx_create(mlx_data);
 	scene->canvas = canvas(1920, 1080);
 	data = get_next_line(fd);
@@ -65,4 +66,5 @@ void	scene_init(t_scene *scene, int fd, t_mlx *mlx_data)
 		data_split = ft_split(data, ' ');
 	}
 	scene->world = world;
+	scene->now = &scene->camera;
 }

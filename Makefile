@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+         #
+#    By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 16:11:45 by jaejo             #+#    #+#              #
-#    Updated: 2025/06/04 01:16:13 by seungsch         ###   ########.fr        #
+#    Updated: 2025/06/04 20:20:14 by jaejo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ CFLAGS = -g
 NAME = minirt
 
 FREE_SRCS = ./free/free.c \
+
+HOOK_SRCS = ./hook/hook_list.c \
 
 PRINT_SRCS = ./print/write_color.c ./print/print_image.c \
 
@@ -29,7 +31,8 @@ SCENE_SRCS = ./scene/scene.c ./scene/object_utils.c ./scene/object_create.c \
 VEC_UTILS_SRCS = ./vec/make_vec_utils.c ./vec/vec_minus_utils.c ./vec/vec_mult_div_utils.c \
 				 ./vec/vec_operator_utils.c ./vec/vec_plus_utils.c \
 
-SRCS = ./main.c $(PRINT_SRCS) $(VEC_UTILS_SRCS) $(TRACE_SRCS) $(SCENE_SRCS) $(FREE_SRCS)
+SRCS = ./main.c $(PRINT_SRCS) $(VEC_UTILS_SRCS) $(TRACE_SRCS) $(SCENE_SRCS) $(FREE_SRCS) \
+		$(HOOK_SRCS)
 
 OBJS = $(SRCS:.c=.o)
 
