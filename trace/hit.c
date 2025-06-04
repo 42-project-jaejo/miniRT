@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 00:23:28 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/04 00:36:03 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/04 19:06:38 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_bool	hit_obj(t_object *world, t_ray *ray, t_hit_record *rec)
 	hit_result = FALSE;
 	if (world->type == SP)
 		hit_result = hit_sphere(world, ray, rec);
+	if (world->type == PL)
+		hit_result = hit_plane(world, ray, rec);
 	return (hit_result);
 }
 
