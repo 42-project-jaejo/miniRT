@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 17:19:48 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 00:25:27 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:14:33 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ t_plane	*plane_init(t_vec_point3 point, t_vec3 dir)
 	return (pl);
 }
 
-t_cylinder	*cylinder_init(t_vec_point3 center, t_vec3 normal, double t_radius,
-		double b_radius)
+t_cylinder	*cylinder_init(t_vec_point3 center, t_vec3 normal, double height,
+		double radius)
 {
 	t_cylinder	*cy;
 
@@ -75,9 +75,8 @@ t_cylinder	*cylinder_init(t_vec_point3 center, t_vec3 normal, double t_radius,
 		return (cy);
 	cy->normal = normal;
 	cy->center = center;
-	cy->top_radius = t_radius;
-	cy->top_radius2 = t_radius * t_radius;
-	cy->bottom_radius = b_radius;
-	cy->bottom_radius2 = b_radius * b_radius;
+	cy->height = height;
+	cy->radius = radius;
+	cy->radius2 = radius * radius;
 	return (cy);
 }

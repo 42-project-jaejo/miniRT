@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 20:11:06 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 19:09:42 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/06 03:51:44 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ t_camera	ft_camera_init(t_canvas *canvas, char **data)
 	cam.viewport_w = cam.viewport_h * canvas->aspect_ratio;
 	cam.horizontal = vec_mult(u, cam.viewport_w);
 	cam.vertical = vec_mult(vec_mult(v, -1), cam.viewport_h);
-	cam.left_bottom = two_vec_minus(two_vec_minus(two_vec_minus(cam.orig,
-					vec_div(cam.horizontal, 2)), vec_div(cam.vertical, 2)),
-			vec_mult(cam.cam_dir, -cam.focal_len));
+	cam.left_bottom = two_vec_minus(two_vec_minus(two_vec_minus(cam.orig, \
+					vec_div(cam.horizontal, 2)), vec_div(cam.vertical, 2)), \
+			vec_mult(cam.cam_dir,  -cam.focal_len));
 	return (cam);
 }

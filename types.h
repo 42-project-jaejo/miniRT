@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:47:08 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 00:22:41 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/05 23:13:36 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,9 @@ typedef struct s_cylinder
 {
 	t_vec_point3		center;
 	t_vec3				normal;
-	double				top_radius;
-	double				top_radius2;
-	double				bottom_radius;
-	double				bottom_radius2;
+	double				height;
+	double				radius;
+	double				radius2;
 }						t_cylinder;
 
 typedef struct s_hit_record
