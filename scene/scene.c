@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 20:00:23 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/05 00:58:59 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/06 21:33:22 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ void	scene_init(t_scene *scene, int fd, t_mlx *mlx_data)
 		else if (!ft_strncmp(data_split[0], "L", 2))
 			scene->light = ft_light_intit(data_split);
 		else if (!ft_strncmp(data_split[0], "A", 2))
-			scene->ambient = vec_mult(ft_char_to_vec(data_split[2]),
-					ft_strtod(data_split[1], 0));
+			scene->ambient = \
+			vec_mult(ft_trance_rgb(ft_char_to_vec(data_split[2])), \
+			ft_strtod(data_split[1], 0));
 		else if (!ft_strncmp(data_split[0], "cy", 2))
 			object_add(&world, ft_cy_init(data_split));
 		else if (!ft_strncmp(data_split[0], "pl", 2))

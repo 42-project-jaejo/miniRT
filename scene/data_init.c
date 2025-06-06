@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 20:11:06 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 19:15:00 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/06 21:30:04 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_object	*ft_light_intit(char **data)
 	brightness_ratio = ft_strtod(data[2], 0);
 	point = ft_char_to_vec(data[1]);
 	color = ft_char_to_vec(data[3]);
+	color = ft_trance_rgb(color);
 	lights = light_point(point, color, brightness_ratio);
 	obj = object_init(LIGHT_POINT, lights, color3(0, 0, 0));
 	return (obj);
@@ -38,6 +39,7 @@ t_object	*ft_sp_init(char **data)
 	r = ft_strtod(data[2], 0);
 	color = ft_char_to_vec(data[3]);
 	center = ft_char_to_vec(data[1]);
+	color = ft_trance_rgb(color);
 	sp = object_init(SP, sphere_init(center, r), color);
 	return (sp);
 }
@@ -52,6 +54,7 @@ t_object	*ft_pl_init(char **data)
 	normal = ft_char_to_vec(data[2]);
 	color = ft_char_to_vec(data[3]);
 	center = ft_char_to_vec(data[1]);
+	color = ft_trance_rgb(color);
 	obj = object_init(PL, plane_init(center, normal), color);
 	return (obj);
 }
@@ -66,6 +69,7 @@ t_object	*ft_cy_init(char **data)
 	color = ft_char_to_vec(data[5]);
 	center = ft_char_to_vec(data[1]);
 	normal = ft_char_to_vec(data[2]);
+	color = ft_trance_rgb(color);
 	obj = object_init(CY, cylinder_init(center, normal, ft_strtod(data[4], 0),
 				ft_strtod(data[3], 0)), color);
 	return (obj);

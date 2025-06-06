@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 20:13:10 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 19:03:10 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/06 19:36:38 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void   moving_origin(t_vec3 *origin, int key)
 	else if (key == KEY_RIGHT)
 		origin->x = origin->x - 1.0;
 	else if (key == KEY_GO)
-		origin->z = origin->z - 1.0;
-	else if (key == KEY_BACK)
 		origin->z = origin->z + 1.0;
+	else if (key == KEY_BACK)
+		origin->z = origin->z - 1.0;
 }
 
 void	object_moving(t_scene *data, int key)

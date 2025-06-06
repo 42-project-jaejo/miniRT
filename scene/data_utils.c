@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 21:16:25 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 00:33:28 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/06 21:34:20 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,14 @@ t_vec3	ft_char_to_vec(char *data)
 	vec.z = ft_strtod(split[2], 0);
 	split_free(split);
 	return (vec);
+}
+
+t_vec3	ft_trance_rgb(t_vec3 rgb)
+{
+	t_vec3	trance_rgb;
+
+	trance_rgb.x = rgb.x / 255.0;
+	trance_rgb.y = rgb.y / 255.0;
+	trance_rgb.z = rgb.z / 255.0;
+	return (trance_rgb); 
 }
