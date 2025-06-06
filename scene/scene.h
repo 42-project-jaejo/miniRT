@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:58:13 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/05 23:15:18 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/06 19:15:07 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../minilibx-linux/mlx.h"
 # include "../types.h"
+# include "../free/free.h"
 # include "../vec/vec_utils.h"
 # include <fcntl.h>
 # include <math.h>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 22:50:59 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 19:55:08 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/06 19:15:13 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static double	discriminant_check(t_object *world, t_ray *ray)
 {
 	t_vec3	oc;
 	double	half_b;
-	double	discriminant;
 	double	c;
 	double	a;
 
@@ -34,16 +33,14 @@ static t_bool	rec_sphere(t_object *world, t_ray *ray, t_hit_record *rec,
 	double	sqrtd;
 	double	half_b;
 	double	root;
-	double	a;
 
 	oc = two_vec_minus(ray->orig, ((t_sphere *)(world->element))->center);
-	a = square_vec(ray->dir);
 	half_b = vec_dot(oc, ray->dir);
 	sqrtd = sqrt(discriminant);
-	root = (-half_b - sqrtd) / a;
+	root = (-half_b - sqrtd) / square_vec(ray->dir);
 	if (root < rec->tmin || rec->tmax < root)
 	{
-		root = (-half_b + sqrtd) / a;
+		root = (-half_b + sqrtd) / square_vec(ray->dir);
 		if (root < rec->tmin || rec->tmax < root)
 			return (FALSE);
 	}

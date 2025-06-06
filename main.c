@@ -3,43 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:26:53 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 19:06:46 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/06 19:14:06 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	x_hook(t_mlx *c_data)
-{
-	if (c_data->img)
-		mlx_destroy_image(c_data->mlx, c_data->img);
-	mlx_destroy_window(c_data->mlx, c_data->win);
-	mlx_destroy_display(c_data->mlx);
-	free(c_data->mlx);
-	exit(0);
-	return (0);
-}
-
-int	key_hook(int keycode, t_mlx *c_data)
-{
-	if (keycode == KEY_ESC)
-		x_hook(c_data);
-	return (0);
-}
-
 int	main(int ac, char **av)
 {
 	t_scene	scene;
-	t_mlx	data;
 
-	file_init(&scene, ac, av[1], &data);
-	print_image(&scene, &data);
-	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
-	mlx_key_hook(data.win, key_hook, &data);
-	mlx_hook(data.win, 17, 0, x_hook, &data);
-	mlx_loop(data.mlx);
+	file_init(&scene, ac, av[1], &scene.mlx_data);
+	print_image(&scene, &scene.mlx_data);
+	mlx_put_image_to_window(scene.mlx_data.mlx, scene.mlx_data.win, \
+		scene.mlx_data.img, 0, 0);
+	mlx_key_hook(scene.mlx_data.win, key_hook, &scene);
+	mlx_hook(scene.mlx_data.win, 17, 0, x_hook, &scene);
+	mlx_loop(scene.mlx_data.mlx);
 	return (0);
 }
