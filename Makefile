@@ -6,7 +6,7 @@
 #    By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 16:11:45 by jaejo             #+#    #+#              #
-#    Updated: 2025/06/04 20:20:14 by jaejo            ###   ########.fr        #
+#    Updated: 2025/06/06 19:14:13 by jaejo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ HOOK_SRCS = ./hook/hook_list.c \
 
 PRINT_SRCS = ./print/write_color.c ./print/print_image.c \
 
-TRACE_SRCS = ./trace/trace.c ./trace/hit_sphere.c ./trace/phong_lighting.c ./trace/hit.c ./trace/hit_plane.c\
+TRACE_SRCS = ./trace/trace.c ./trace/hit_sphere.c ./trace/phong_lighting.c \
+			./trace/hit.c ./trace/hit_plane.c ./trace/hit_utils.c ./trace/hit_cylinder.c\
+			./trace/hit_circle.c
 
 SCENE_SRCS = ./scene/scene.c ./scene/object_utils.c ./scene/object_create.c \
 			./scene/file_init.c ./scene/file_data_check.c ./scene/file_check_utils.c \

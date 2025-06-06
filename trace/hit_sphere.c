@@ -6,20 +6,11 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 22:50:59 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 20:11:53 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/06 19:15:13 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./trace.h"
-
-void	set_face_normal(t_ray *r, t_hit_record *rec)
-{
-	rec->front_face = vec_dot(r->dir, rec->normal) < 0;
-	if (rec->front_face)
-		rec->normal = rec->normal;
-	else
-		rec->normal = vec_mult(rec->normal, -1);
-}
 
 static double	discriminant_check(t_object *world, t_ray *ray)
 {

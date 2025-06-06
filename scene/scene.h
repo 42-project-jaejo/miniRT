@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:58:13 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 22:40:54 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/06 19:15:07 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ t_camera	camera(t_canvas *canvas, t_vec_point3 origin);
 t_sphere	*sphere_init(t_vec_point3 center, double radius);
 t_plane		*plane_init(t_vec_point3 point, t_vec3 dir);
 t_object	*object_init(t_object_type type, void *element, t_color3 albedo);
-t_cylinder	*cylinder_init(t_vec_point3 center, t_vec3 normal, double t_radius,
-				double b_radius);
+t_cylinder	*cylinder_init(t_vec_point3 center, t_vec3 normal, double radius,
+				double height);
 t_light		*light_point(t_vec_point3 light_origin, t_color3 light_color,
 				double bright_ratio);
 /* object_utils.c */

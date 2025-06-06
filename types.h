@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:47:08 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/05 01:03:03 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/06 19:14:46 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define L 9
 # define LIGHT_POINT 10
 # define EPSILON 1e-6 // 0.000001
-# define LUMEN 11
+# define LUMEN 3
 # define KEY_ESC 65307
 # define ONE 49
 # define TWO 50
@@ -108,10 +108,9 @@ typedef struct s_cylinder
 {
 	t_vec_point3		center;
 	t_vec3				normal;
-	double				top_radius;
-	double				top_radius2;
-	double				bottom_radius;
-	double				bottom_radius2;
+	double				height;
+	double				radius;
+	double				radius2;
 }						t_cylinder;
 
 typedef struct s_hit_record
