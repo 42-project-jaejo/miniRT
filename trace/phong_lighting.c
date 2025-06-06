@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 22:23:55 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 00:27:06 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/06 19:06:38 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ t_color3	point_light_get(t_scene *scene, t_light *light)
 	double		brightness;
 
 	//기본
-	// 1
-	// 2
 	// 1 (그림자)
 	light_dir = two_vec_minus(light->origin, scene->rec.p);
 	light_len = vec_length(light_dir);
@@ -55,7 +53,6 @@ t_color3	point_light_get(t_scene *scene, t_light *light)
 		return (color3(0, 0, 0));
 	light_dir = vec_unit(light_dir);
 	// 기본
-	// light_dir = vec_unit(two_vec_minus(light->origin, scene->rec.p));
 	kd = fmax(vec_dot(scene->rec.normal, light_dir), 0.0);
 	diffuse = vec_mult(light->light_color, kd);
 	// 2 (물체의 빛 반사 부분)

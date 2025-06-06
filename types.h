@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:47:08 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/05 23:13:36 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/06 18:49:55 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define CY 7
 # define LIGHT_POINT 10
 # define EPSILON 1e-6 // 0.000001
-# define LUMEN 11
+# define LUMEN 3
 # define KEY_ESC 65307
 # define M_PI 3.14159265358979323846
 
