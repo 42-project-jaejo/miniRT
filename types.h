@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:47:08 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 19:14:46 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/06 22:04:17 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ typedef struct s_light
 typedef struct s_scene
 {
 	void				*now;
+	char				*object_name;
 	t_canvas			canvas;
 	t_camera			camera;
 	t_object			*world;

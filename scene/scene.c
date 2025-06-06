@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 20:00:23 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 21:33:22 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/06 22:04:47 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,5 @@ void	scene_init(t_scene *scene, int fd, t_mlx *mlx_data)
 	}
 	scene->world = world;
 	scene->now = &scene->camera;
+	scene->object_name = "Camera";
 }
