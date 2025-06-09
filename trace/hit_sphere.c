@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 22:50:59 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 19:15:13 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/10 00:16:26 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ static t_bool	rec_sphere(t_object *world, t_ray *ray, t_hit_record *rec,
 t_bool	hit_sphere(t_object *world, t_ray *ray, t_hit_record *rec)
 {
 	double		discriminant;
-	double		sqrtd;
-	double		root;
 	t_sphere	*sp;
 
 	sp = world->element;

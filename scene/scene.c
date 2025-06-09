@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 20:00:23 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/09 22:31:27 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/10 00:17:19 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static void	scene_data_init(t_scene *scene, char *data, \
 void	scene_init(t_scene *scene, char *file, t_mlx *mlx_data)
 {
 	int			fd;
-	t_object	*lights;
 	char		*data;
 	char		**data_split;
 

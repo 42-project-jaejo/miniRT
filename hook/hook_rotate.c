@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 20:15:25 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/09 21:34:11 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/10 00:22:30 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vec3	rotate_xyz(t_vec3 vec, double radian, int key)
 		new_vec.y = vec.y;
 		new_vec.z = -vec.x * sin(radian) + vec.z * cos(radian);
 	}
-	else if (key == Z)
+	else
 	{
 		new_vec.x = vec.x * cos(radian) - vec.y * sin(radian);
 		new_vec.y = vec.x * sin(radian) + vec.y * cos(radian);

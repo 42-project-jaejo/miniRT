@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 19:01:39 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/09 22:14:03 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/10 00:21:41 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static t_bool	file_name_check(char *file)
 {
 	int	i;
-	int	fd;
 
 	i = ft_strlen(file);
 	if (!file[i--] && i > 3)

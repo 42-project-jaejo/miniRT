@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 21:16:25 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 21:34:20 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/10 00:15:12 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ t_vec3	ft_trance_rgb(t_vec3 rgb)
 	trance_rgb.x = rgb.x / 255.0;
 	trance_rgb.y = rgb.y / 255.0;
 	trance_rgb.z = rgb.z / 255.0;
-	return (trance_rgb); 
+	return (trance_rgb);
 }

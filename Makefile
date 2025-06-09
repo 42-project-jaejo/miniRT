@@ -6,13 +6,13 @@
 #    By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 16:11:45 by jaejo             #+#    #+#              #
-#    Updated: 2025/06/09 20:17:52 by jaejo            ###   ########.fr        #
+#    Updated: 2025/06/10 00:15:49 by jaejo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -g
-# CFLAGS = -Wall -Wextra -Werror -I.
+# CFLAGS = -g
+CFLAGS = -Wall -Wextra -Werror -I.
 
 NAME = minirt
 
