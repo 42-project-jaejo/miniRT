@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:38:20 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 19:15:19 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/09 22:44:57 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_ray	ray_primary(t_camera *cam, double u, double v)
 	return (ray);
 }
 
-t_hit_record	record_init(void)
+static t_hit_record	record_init(void)
 {
 	t_hit_record	record;
 

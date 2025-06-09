@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 20:11:06 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 21:30:04 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/09 23:31:59 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,13 @@ t_object	*ft_cy_init(char **data)
 t_camera	ft_camera_init(t_canvas *canvas, char **data)
 {
 	t_camera	cam;
-	t_vec3		vec_up;
 	t_vec3		u;
 	t_vec3		v;
 
 	cam.focal_len = 1.0;
 	cam.cam_dir = ft_char_to_vec(data[2]);
-	vec_up = vec3(0, 1, 0);
-	u = vec_unit(vec_cross(cam.cam_dir, vec_up));
+	cam.vec_up = vec3(0, 1, 0);
+	u = vec_unit(vec_cross(cam.cam_dir, cam.vec_up));
 	v = vec_cross(cam.cam_dir, u);
 	cam.fov = ft_strtod(data[3], 0) * (M_PI / 180.0);
 	cam.orig = ft_char_to_vec(data[1]);
@@ -95,6 +94,6 @@ t_camera	ft_camera_init(t_canvas *canvas, char **data)
 	cam.vertical = vec_mult(vec_mult(v, -1), cam.viewport_h);
 	cam.left_bottom = two_vec_minus(two_vec_minus(two_vec_minus(cam.orig, \
 					vec_div(cam.horizontal, 2)), vec_div(cam.vertical, 2)), \
-			vec_mult(cam.cam_dir,  -cam.focal_len));
+			vec_mult(cam.cam_dir, -cam.focal_len));
 	return (cam);
 }

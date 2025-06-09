@@ -6,7 +6,7 @@
 #    By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 16:11:45 by jaejo             #+#    #+#              #
-#    Updated: 2025/06/06 22:27:07 by jaejo            ###   ########.fr        #
+#    Updated: 2025/06/09 20:17:52 by jaejo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = minirt
 
 FREE_SRCS = ./free/free.c \
 
-HOOK_SRCS = ./hook/hook_list.c ./hook/hook_utils.c \
+HOOK_SRCS = ./hook/hook_list.c ./hook/hook_utils.c ./hook/hook_rotate.c \
 
 PRINT_SRCS = ./print/write_color.c ./print/print_image.c \
 

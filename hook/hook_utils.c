@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 22:18:54 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 22:28:31 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/09 21:56:13 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,34 @@
 
 void	put_string(t_scene *data)
 {
-	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, \
-		50, 50, 0, "Note");
-	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, \
-		50, 70, 0, "Move up: key bord up");
-	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, \
-		50, 90, 0, "Move down: key bord down");
-	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, \
-		50, 110, 0, "Move left: key bord left");
-	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, \
-		50, 130, 0, "Move right: key bord right");
-	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, \
-		50, 150, 0, "Move front: U");
-	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, \
-		50, 170, 0, "Move back: D");
-	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, \
-		50, 190, 0, "current object: ");
-	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, \
-		145, 190, 0, data->object_name);
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 50, 50, 0, \
+		"Note");
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 50, 70, 0, \
+		"Move up: key bord up            Object chaging Camera: 1");
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 50, 90, 0, \
+		"Move down: key bord down        Object chaging Light: 2");
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 50, 110, 0, \
+		"Move left: key bord left        Object chaging: 3");
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 50, 130, 0, \
+		"Move right: key bord right      Rotate Direction Change: 4");
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 50, 150, 0, \
+		"Move front: U                   Rotate X Axis: X");
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 50, 170, 0, \
+		"Move back: D                    Rotate Y Axis: Y");
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 50, 190, 0, \
+		"current object:                 Rotate Z Axis: Z");
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 145, 190, 0, \
+		data->object_name);
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 242, 210, 0, \
+		"Rotate Direction: ");
+	mlx_string_put(data->mlx_data.mlx, data->mlx_data.win, 347, 210, 0, \
+		data->rotate_dir);
 }
 
-void   moving_origin(t_vec3 *origin, int key)
+void	moving_origin(t_vec3 *origin, int key)
 {
 	if (key == KEY_DOWN)
-	   origin->y = origin->y - 1.0;
+		origin->y = origin->y - 1.0;
 	else if (key == KEY_UP)
 		origin->y = origin->y + 1.0;
 	else if (key == KEY_LEFT)
@@ -78,16 +82,18 @@ void	object_moving(t_scene *data, int key)
 	}
 }
 
-void    data_change(t_scene *data, int key)
+void	data_change(t_scene *data, int key)
 {
-	t_light		*temp;
-	
+	t_light	*temp;
+
 	if (data->now == &data->camera)
 	{
 		moving_origin(&data->camera.orig, key);
-		data->camera.left_bottom = two_vec_minus(two_vec_minus(two_vec_minus(data->camera.orig,
-			 vec_div(data->camera.horizontal, 2)), vec_div(data->camera.vertical, 2)),
-		vec_mult(data->camera.cam_dir, -data->camera.focal_len));
+		data->camera.left_bottom = two_vec_minus(two_vec_minus \
+			(two_vec_minus(data->camera.orig, \
+				vec_div(data->camera.horizontal, 2)), \
+				vec_div(data->camera.vertical, 2)), \
+				vec_mult(data->camera.cam_dir, -data->camera.focal_len));
 	}
 	else if (data->now == data->light)
 	{
@@ -98,20 +104,31 @@ void    data_change(t_scene *data, int key)
 		object_moving(data, key);
 }
 
-t_bool  now_hook_utils(t_scene *data, int keycode)
+t_bool	now_hook_utils(t_scene *data, int keycode)
 {
+	static int	i = 0;
+
 	if (keycode == ONE)
 	{
 		data->now = &data->camera;
 		data->object_name = "Camera";
-        return (TRUE);
+		return (TRUE);
 	}
 	else if (keycode == TWO)
 	{
 		data->now = data->light;
 		data->object_name = "Light";
-        return (TRUE);
+		return (TRUE);
 	}
-    return (FALSE);
+	else if (keycode == FOUR)
+	{
+		if (i++ == 0)
+			data->rotate_dir = "Right";
+		else
+		{
+			data->rotate_dir = "Left";
+			i = 0;
+		}
+	}
+	return (FALSE);
 }
-

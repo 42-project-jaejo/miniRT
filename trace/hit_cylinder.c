@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 19:51:10 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/06 19:07:42 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/09 22:39:47 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 static t_vec3	get_normal(t_cylinder *cylinder, t_hit_record *rec)
 {
 	t_vec3	normal;
-	t_vec3	Q;
+	t_vec3	q;
 	double	denom;
 	t_vec3	molecule;
 
-	Q = two_vec_plus(cylinder->center, vec_mult(cylinder->normal, \
+	q = two_vec_plus(cylinder->center, vec_mult(cylinder->normal, \
 		vec_dot(two_vec_minus(rec->p, cylinder->center), cylinder->normal)));
-	denom = vec_length(two_vec_minus(rec->p, Q));
-	molecule = two_vec_minus(rec->p, Q);
+	denom = vec_length(two_vec_minus(rec->p, q));
+	molecule = two_vec_minus(rec->p, q);
 	if (denom < EPSILON)
 		return (cylinder->normal);
 	normal = vec_div(molecule, denom);

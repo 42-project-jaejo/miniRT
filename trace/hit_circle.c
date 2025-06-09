@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_circle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 00:46:05 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/06 19:07:05 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/09 22:35:43 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ t_bool	hit_top_circle(t_object *world, t_ray *ray, t_hit_record *rec)
 
 t_bool	hit_btm_circle(t_object *world, t_ray *ray, t_hit_record *rec)
 {
-	t_vec3 p;
-	t_vec3 top_center;
-	t_cylinder *cycle;
-	double denom;
-	double t;
+	t_vec3		p;
+	t_vec3		top_center;
+	t_cylinder	*cycle;
+	double		denom;
+	double		t;
 
 	cycle = world->element;
 	denom = vec_dot(cycle->normal, ray->dir);

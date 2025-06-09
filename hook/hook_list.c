@@ -6,13 +6,13 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 20:13:10 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 22:28:09 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/09 21:46:14 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./hook.h"
 
-void    moving_hook(int key, t_scene *data)
+static void	moving_hook(int key, t_scene *data)
 {
 	mlx_destroy_image(data->mlx_data.mlx, data->mlx_data.img);
 	data_change(data, key);
@@ -22,12 +22,12 @@ void    moving_hook(int key, t_scene *data)
 	print_image(data, &data->mlx_data);
 	mlx_put_image_to_window(data->mlx_data.mlx, data->mlx_data.win, \
 		data->mlx_data.img, 0, 0);
-	put_string(data);	
+	put_string(data);
 }
 
-void    now_hook(t_scene *data, int keycode)
+static void	now_hook(t_scene *data, int keycode)
 {
-	static int i = -1;
+	static int	i = -1;
 	int			j;
 	t_object	*temp;
 
@@ -65,15 +65,44 @@ int	x_hook(t_scene *data)
 	return (0);
 }
 
+static void	rotate_hook(t_scene *data, int key, t_object *obj)
+{
+	double		radian;
+	t_plane		*pl;
+	t_cylinder	*cy;
+
+	if (data->rotate_dir[0] == 'L')
+		radian = 10 * (M_PI / 180.0);
+	else
+		radian = 350 * (M_PI / 180.0);
+	if (data->now == &data->camera)
+		camera_rotate(data, key, radian);
+	else if (obj->type == PL)
+	{
+		pl = (t_plane *)obj->element;
+		pl->normal = rotate_xyz(pl->normal, radian, key);
+	}
+	else if (obj->type == CY)
+	{
+		cy = (t_cylinder *)obj->element;
+		cy->normal = rotate_xyz(cy->normal, radian, key);
+	}
+	moving_hook(key, data);
+}
+
 int	key_hook(int keycode, t_scene *data)
 {
 	if (keycode == KEY_ESC)
 		x_hook(data);
-	else if (keycode == ONE || keycode == TWO || keycode == THREE)
+	else if (keycode == ONE || keycode == TWO || \
+			keycode == THREE || keycode == FOUR)
 		now_hook(data, keycode);
 	else if (keycode == KEY_DOWN || keycode == KEY_UP || \
 			keycode == KEY_RIGHT || keycode == KEY_LEFT || \
 			keycode == KEY_GO || keycode == KEY_BACK)
 		moving_hook(keycode, data);
+	else if (data->now != &data->light && \
+			(keycode == X || keycode == Y || keycode == Z))
+		rotate_hook(data, keycode, (t_object *)data->now);
 	return (0);
 }

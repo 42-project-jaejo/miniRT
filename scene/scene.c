@@ -6,13 +6,13 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 20:00:23 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 22:04:47 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/09 22:31:27 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./scene.h"
 
-void	mlx_create(t_mlx *data)
+static void	mlx_create(t_mlx *data)
 {
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, 1920, 1080, "mini_rt");
@@ -21,7 +21,7 @@ void	mlx_create(t_mlx *data)
 			&data->endian);
 }
 
-t_canvas	canvas(int width, int height)
+static t_canvas	canvas(int width, int height)
 {
 	t_canvas	canvas;
 
@@ -31,18 +31,12 @@ t_canvas	canvas(int width, int height)
 	return (canvas);
 }
 
-void	scene_init(t_scene *scene, int fd, t_mlx *mlx_data)
+static void	scene_data_init(t_scene *scene, char *data, \
+	char **data_split, int fd)
 {
 	t_object	*world;
-	t_object	*lights;
-	char		*data;
-	char		**data_split;
 
 	world = NULL;
-	mlx_create(mlx_data);
-	scene->canvas = canvas(1920, 1080);
-	data = get_next_line(fd);
-	data_split = ft_split(data, ' ');
 	while (data)
 	{
 		free(data);
@@ -51,9 +45,8 @@ void	scene_init(t_scene *scene, int fd, t_mlx *mlx_data)
 		else if (!ft_strncmp(data_split[0], "L", 2))
 			scene->light = ft_light_intit(data_split);
 		else if (!ft_strncmp(data_split[0], "A", 2))
-			scene->ambient = \
-			vec_mult(ft_trance_rgb(ft_char_to_vec(data_split[2])), \
-			ft_strtod(data_split[1], 0));
+			scene->ambient = vec_mult(ft_trance_rgb \
+				(ft_char_to_vec(data_split[2])), ft_strtod(data_split[1], 0));
 		else if (!ft_strncmp(data_split[0], "cy", 2))
 			object_add(&world, ft_cy_init(data_split));
 		else if (!ft_strncmp(data_split[0], "pl", 2))
@@ -62,11 +55,26 @@ void	scene_init(t_scene *scene, int fd, t_mlx *mlx_data)
 			object_add(&world, ft_sp_init(data_split));
 		split_free(data_split);
 		data = get_next_line(fd);
-		if (!data)
-			break ;
-		data_split = ft_split(data, ' ');
+		if (data)
+			data_split = ft_split(data, ' ');
 	}
 	scene->world = world;
+}
+
+void	scene_init(t_scene *scene, char *file, t_mlx *mlx_data)
+{
+	int			fd;
+	t_object	*lights;
+	char		*data;
+	char		**data_split;
+
+	fd = open(file, O_RDONLY);
+	mlx_create(mlx_data);
+	scene->canvas = canvas(1920, 1080);
+	data = get_next_line(fd);
+	data_split = ft_split(data, ' ');
+	scene_data_init(scene, data, data_split, fd);
 	scene->now = &scene->camera;
 	scene->object_name = "Camera";
+	scene->rotate_dir = "Left";
 }

@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:58:13 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 21:29:25 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/09 22:20:12 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ t_camera	ft_camera_init(t_canvas *canvas, char **data);
 t_vec3		ft_char_to_vec(char *data);
 t_vec3		ft_trance_rgb(t_vec3 rgb);
 /* scene.c */
-void		scene_init(t_scene *scene, int fd, t_mlx *mlx_data);
-t_canvas	canvas(int width, int height);
-t_camera	camera(t_canvas *canvas, t_vec_point3 origin);
+void		scene_init(t_scene *scene, char *file, t_mlx *mlx_data);
 /* object_create.c */
 t_sphere	*sphere_init(t_vec_point3 center, double radius);
 t_plane		*plane_init(t_vec_point3 point, t_vec3 dir);
