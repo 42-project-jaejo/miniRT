@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 19:51:10 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/06 19:07:42 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/06 20:24:15 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 static t_vec3	get_normal(t_cylinder *cylinder, t_hit_record *rec)
 {
 	t_vec3	normal;
-	t_vec3	Q;
-	double	denom;
+	t_vec3	cp;
 	t_vec3	molecule;
+	double	m;
 
-	Q = two_vec_plus(cylinder->center, vec_mult(cylinder->normal, \
-		vec_dot(two_vec_minus(rec->p, cylinder->center), cylinder->normal)));
-	denom = vec_length(two_vec_minus(rec->p, Q));
-	molecule = two_vec_minus(rec->p, Q);
-	if (denom < EPSILON)
-		return (cylinder->normal);
-	normal = vec_div(molecule, denom);
-	// normal = vec_unit(molecule);
+	cp = two_vec_minus(rec->p, cylinder->center);
+	m = vec_dot(cp, cylinder->normal);
+	if (fabs(m + cylinder->height / 2) < EPSILON)
+		normal = vec_mult(cylinder->normal, -1);
+	else if (fabs(m - cylinder->height / 2) < EPSILON)
+		normal = cylinder->normal;
+	else
+		normal = vec_unit(two_vec_minus(cp,
+				vec_mult(cylinder->normal, m)));
 	return (normal);
 }
 
