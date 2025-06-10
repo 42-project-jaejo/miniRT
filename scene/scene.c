@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 20:00:23 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/10 00:17:19 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/10 19:02:21 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	mlx_create(t_mlx *data)
 {
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, 1920, 1080, "mini_rt");
-	data->img = mlx_new_image(data->mlx, 1920, 1080);
+	data->win = mlx_new_window(data->mlx, 1280, 960, "mini_rt");
+	data->img = mlx_new_image(data->mlx, 1280, 960);
 	data->img_addr = mlx_get_data_addr(data->img, &data->bpp, &data->width,
 			&data->endian);
 }
@@ -69,7 +69,7 @@ void	scene_init(t_scene *scene, char *file, t_mlx *mlx_data)
 
 	fd = open(file, O_RDONLY);
 	mlx_create(mlx_data);
-	scene->canvas = canvas(1920, 1080);
+	scene->canvas = canvas(1280, 960);
 	data = get_next_line(fd);
 	data_split = ft_split(data, ' ');
 	scene_data_init(scene, data, data_split, fd);

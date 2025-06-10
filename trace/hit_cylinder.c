@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 19:51:10 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/10 18:32:18 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:36:44 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static t_vec3	get_normal(t_cylinder *cylinder, t_hit_record *rec)
 {
 	t_vec3	normal;
 	t_vec3	cp;
-	t_vec3	molecule;
 	double	m;
 
 	cp = two_vec_minus(rec->p, cylinder->center);
