@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_check_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 16:09:21 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 00:25:46 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/09 21:57:21 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	split_size(char **split)
 	return (i);
 }
 
-double	ft_strtod(char *str, int i) // 변환값이 문자를 만나 끝났을 때 에러 처리(atoi도 추가해야함)
+double	ft_strtod(char *str, int i)
 {
 	int		flag;
 	double	div;

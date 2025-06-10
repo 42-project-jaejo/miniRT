@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:47:08 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 19:14:46 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/09 21:39:59 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,16 @@
 # define ONE 49
 # define TWO 50
 # define THREE 51
+# define FOUR 52
 # define KEY_UP 117
 # define KEY_DOWN 100
 # define KEY_LEFT 65363
 # define KEY_RIGHT 65361
 # define KEY_BACK 65362
 # define KEY_GO 65364
+# define X 120
+# define Y 121
+# define Z 122
 
 # define M_PI 3.14159265358979323846
 
@@ -78,6 +82,7 @@ typedef struct s_camera
 	t_vec3				horizontal;
 	t_vec3				vertical;
 	t_vec3				cam_dir;
+	t_vec3				vec_up;
 	double				fov;
 	double				focal_len;
 	t_vec_point3		left_bottom;
@@ -142,6 +147,8 @@ typedef struct s_light
 typedef struct s_scene
 {
 	void				*now;
+	char				*rotate_dir;
+	char				*object_name;
 	t_canvas			canvas;
 	t_camera			camera;
 	t_object			*world;

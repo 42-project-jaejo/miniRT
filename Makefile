@@ -6,19 +6,19 @@
 #    By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 16:11:45 by jaejo             #+#    #+#              #
-#    Updated: 2025/06/06 19:14:13 by jaejo            ###   ########.fr        #
+#    Updated: 2025/06/10 00:15:49 by jaejo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -g
-# CFLAGS = -Wall -Wextra -Werror -I.
+# CFLAGS = -g
+CFLAGS = -Wall -Wextra -Werror -I.
 
 NAME = minirt
 
 FREE_SRCS = ./free/free.c \
 
-HOOK_SRCS = ./hook/hook_list.c \
+HOOK_SRCS = ./hook/hook_list.c ./hook/hook_utils.c ./hook/hook_rotate.c \
 
 PRINT_SRCS = ./print/write_color.c ./print/print_image.c \
 

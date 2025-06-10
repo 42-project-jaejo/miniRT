@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 19:51:10 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/06 20:24:15 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:32:18 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ static t_bool	hit_center_cylinder(t_object *world, t_ray *ray,
 		t_hit_record *rec)
 {
 	t_cylinder	*cylinder;
-	t_vec3		minus;
 	double		root;
 
 	cylinder = world->element;

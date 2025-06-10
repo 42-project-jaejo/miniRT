@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:26:53 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 19:14:06 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/06 22:06:22 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int ac, char **av)
 	print_image(&scene, &scene.mlx_data);
 	mlx_put_image_to_window(scene.mlx_data.mlx, scene.mlx_data.win, \
 		scene.mlx_data.img, 0, 0);
+	put_string(&scene);
 	mlx_key_hook(scene.mlx_data.win, key_hook, &scene);
 	mlx_hook(scene.mlx_data.win, 17, 0, x_hook, &scene);
 	mlx_loop(scene.mlx_data.mlx);
