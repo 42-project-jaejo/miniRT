@@ -6,7 +6,7 @@
 /*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 19:01:39 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/10 00:21:41 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/10 20:39:56 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	file_init(t_scene *scene, int ac, char *file, t_mlx *data)
 			if (fd == -1)
 			{
 				write(2, "Error: file open err\n", 22);
-				return ;
+				exit (1);
 			}
 			if (file_data_check(fd))
 				scene_init(scene, file, data);
@@ -46,10 +46,11 @@ void	file_init(t_scene *scene, int ac, char *file, t_mlx *data)
 			{
 				close(fd);
 				write (2, "Error : file data err\n", 23);
-				return ;
+				exit (1);
 			}
 		}
 		return ;
 	}
 	write(2, "Error :2 arguments required.\n", 30);
+	exit (1);
 }

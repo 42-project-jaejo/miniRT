@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_data_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 20:29:19 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/04 00:25:42 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/10 20:45:14 by jaejo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,44 @@ static t_bool	detect_value_type(char **data)
 	return (FALSE);
 }
 
+static t_bool	string_check(char **data)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (data[i])
+	{
+		j = 0;
+		if (data[i][j] && (data[i][j] == '+' || data[i][j] == '-'))
+			j++;
+		while (data[i][j] && data[i][j] >= '0' && data[i][j] <= '9')
+		{
+			while (data[i][j] && data[i][j] >= '0' && data[i][j] <= '9')
+				j++;
+			if (data[i][j] && (data[i][j] == ',' || data[i][j] == '.'))
+				j++;
+			if (data[i][j] && (data[i][j] == '+' || data[i][j] == '-'))
+				j++;
+		}
+		if (data[i][j])
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
+
 static t_bool	detect_rt_type(char **data, int *flag)
 {
 	if (object_data_check(data[0], flag, split_size(data)))
 	{
 		if (detect_value_type(data))
 		{
-			split_free(data);
-			return (TRUE);
+			if (string_check(data))
+			{
+				split_free(data);
+				return (TRUE);
+			}
 		}
 	}
 	return (FALSE);
