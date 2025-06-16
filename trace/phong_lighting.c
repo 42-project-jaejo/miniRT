@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 22:23:55 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/10 18:32:27 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/17 02:49:50 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static t_bool	in_shadow(t_object *objs, t_ray light_ray, double light_len)
 	t_hit_record	rec;
 
 	rec.tmin = 0;
+	rec.normal = vec3(0, 0, 0);
 	rec.tmax = light_len;
 	if (hit(objs, &light_ray, &rec))
 		return (TRUE);

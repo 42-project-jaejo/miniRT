@@ -6,12 +6,12 @@
 #    By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 16:11:45 by jaejo             #+#    #+#              #
-#    Updated: 2025/06/17 02:11:51 by seungsch         ###   ########.fr        #
+#    Updated: 2025/06/17 02:15:14 by seungsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror -I. -g
 
 NAME = minirt
 

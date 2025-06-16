@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 00:46:05 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/17 01:49:33 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/17 02:48:34 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_vec3	get_cy_normal(t_cylinder *cycle, t_hit_record *rec)
 	t_vec3	normal;
 
 	normal = vec_unit(cycle->normal);
-	if (vec_dot(rec->normal, cycle->normal) < 0)
+	if (vec_dot(rec->normal, cycle->normal) < 0.0)
 		normal = vec_mult(normal, -1);
 	return (normal);
 }
