@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   hit_circle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 00:46:05 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/09 22:35:43 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/16 20:38:53 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./trace.h"
+
+t_vec3	get_cy_normal(t_cylinder *cycle, t_hit_record *rec)
+{
+	t_vec3	normal;
+
+	normal = vec_unit(cycle->normal);
+	if (vec_dot(rec->normal, cycle->normal) < 0)
+		normal = vec_mult(normal, -1);
+	return (normal);
+}
 
 t_bool	hit_top_circle(t_object *world, t_ray *ray, t_hit_record *rec)
 {
@@ -32,9 +42,11 @@ t_bool	hit_top_circle(t_object *world, t_ray *ray, t_hit_record *rec)
 	p = ray_at(ray, t);
 	if (vec_length(two_vec_minus(p, top_center)) > cycle->radius)
 		return (FALSE);
+	if (t > rec->t)
+		return (FALSE);
 	rec->t = t;
 	rec->p = p;
-	rec->normal = cycle->normal;
+	rec->normal = get_cy_normal(cycle, rec);
 	set_face_normal(ray, rec);
 	rec->albedo = world->albedo;
 	return (TRUE);
@@ -60,9 +72,11 @@ t_bool	hit_btm_circle(t_object *world, t_ray *ray, t_hit_record *rec)
 	p = ray_at(ray, t);
 	if (vec_length(two_vec_minus(p, top_center)) > cycle->radius)
 		return (FALSE);
+	if (t > rec->t)
+		return (FALSE);
 	rec->t = t;
 	rec->p = p;
-	rec->normal = vec_mult(cycle->normal, -1);
+	rec->normal = get_cy_normal(cycle, rec);
 	set_face_normal(ray, rec);
 	rec->albedo = world->albedo;
 	return (TRUE);
