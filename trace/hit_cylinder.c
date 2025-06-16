@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 19:51:10 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/10 18:36:44 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/16 20:40:14 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ static t_bool	hit_center_cylinder(t_object *world, t_ray *ray,
 	cylinder = world->element;
 	if (!discriminant(cylinder, ray, rec, &root))
 		return (FALSE);
+	if (root > rec->t)
+	{
+		printf("bb\n");
+		return (FALSE);
+	}
 	rec->t = root;
 	rec->p = ray_at(ray, root);
 	rec->normal = get_normal(cylinder, rec);
@@ -89,11 +94,17 @@ static t_bool	hit_center_cylinder(t_object *world, t_ray *ray,
 
 t_bool	hit_cylinder(t_object *world, t_ray *ray, t_hit_record *rec)
 {
-	if (hit_top_circle(world, ray, rec))
-		return (TRUE);
-	if (hit_btm_circle(world, ray, rec))
-		return (TRUE);
+	int	flag;
+
+	flag = 0;
+	rec->t = INFINITY;
 	if (hit_center_cylinder(world, ray, rec))
+		flag = 1;
+	if (hit_top_circle(world, ray, rec))
+		flag = 1;	
+	if (hit_btm_circle(world, ray, rec))
+		flag = 1;
+	if (flag == 1)
 		return (TRUE);
 	return (FALSE);
 }

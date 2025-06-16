@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 00:46:05 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/10 18:46:06 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/16 20:38:53 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_bool	hit_top_circle(t_object *world, t_ray *ray, t_hit_record *rec)
 	p = ray_at(ray, t);
 	if (vec_length(two_vec_minus(p, top_center)) > cycle->radius)
 		return (FALSE);
+	if (t > rec->t)
+		return (FALSE);
 	rec->t = t;
 	rec->p = p;
 	rec->normal = get_cy_normal(cycle, rec);
@@ -69,6 +71,8 @@ t_bool	hit_btm_circle(t_object *world, t_ray *ray, t_hit_record *rec)
 		return (FALSE);
 	p = ray_at(ray, t);
 	if (vec_length(two_vec_minus(p, top_center)) > cycle->radius)
+		return (FALSE);
+	if (t > rec->t)
 		return (FALSE);
 	rec->t = t;
 	rec->p = p;
