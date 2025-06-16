@@ -3,15 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+         #
+#    By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 16:11:45 by jaejo             #+#    #+#              #
-#    Updated: 2025/06/10 00:15:49 by jaejo            ###   ########.fr        #
+#    Updated: 2025/06/17 02:11:51 by seungsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-# CFLAGS = -g
 CFLAGS = -Wall -Wextra -Werror -I.
 
 NAME = minirt
@@ -43,7 +42,6 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	$(MAKE) -C ./ft_printf 
 	$(MAKE) -C ./minilibx-linux
-#$(CC) $(CFLAGS) $(OBJS) -L./ft_printf -lftprintf -lm -o $(NAME)
 	$(CC) $(CFLAGS) $(OBJS) -L./ft_printf -lftprintf -L./minilibx-linux -lmlx -lXext -lX11 -lm -o $(NAME)
 
 %.o : %.c
