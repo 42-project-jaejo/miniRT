@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 20:11:06 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/10 20:52:37 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/17 03:17:40 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_camera	ft_camera_init(t_canvas *canvas, char **data)
 
 	cam.focal_len = 1.0;
 	cam.cam_dir = ft_char_to_vec(data[2]);
-	cam.vec_up = vec3(0, 1, 0);
+	cam_direction_setting(&cam, cam.cam_dir);
 	u = vec_unit(vec_cross(cam.cam_dir, cam.vec_up));
 	v = vec_cross(cam.cam_dir, u);
 	cam.fov = ft_strtod(data[3], 0) * (M_PI / 180.0);

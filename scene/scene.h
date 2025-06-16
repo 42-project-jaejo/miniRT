@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo <jaejo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 19:58:13 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/09 22:20:12 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/17 03:17:57 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_camera	ft_camera_init(t_canvas *canvas, char **data);
 /* data_utils.c */
 t_vec3		ft_char_to_vec(char *data);
 t_vec3		ft_trance_rgb(t_vec3 rgb);
+t_bool		cam_direction_setting(t_camera *cam, t_vec3 cam_dir);
 /* scene.c */
 void		scene_init(t_scene *scene, char *file, t_mlx *mlx_data);
 /* object_create.c */
