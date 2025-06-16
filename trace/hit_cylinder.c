@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 19:51:10 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/16 20:40:14 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/17 01:44:59 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static t_vec3	get_normal(t_cylinder *cylinder, t_hit_record *rec)
 	else if (fabs(m - cylinder->height / 2) < EPSILON)
 		normal = cylinder->normal;
 	else
-		normal = vec_unit(two_vec_minus(cp,
-				vec_mult(cylinder->normal, m)));
+		normal = vec_unit(two_vec_minus(cp, vec_mult(cylinder->normal, m)));
 	return (normal);
 }
 
@@ -101,7 +100,7 @@ t_bool	hit_cylinder(t_object *world, t_ray *ray, t_hit_record *rec)
 	if (hit_center_cylinder(world, ray, rec))
 		flag = 1;
 	if (hit_top_circle(world, ray, rec))
-		flag = 1;	
+		flag = 1;
 	if (hit_btm_circle(world, ray, rec))
 		flag = 1;
 	if (flag == 1)

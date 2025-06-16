@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 17:19:48 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/06 19:08:16 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/17 02:06:51 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ t_sphere	*sphere_init(t_vec_point3 center, double radius)
 	if (!sp)
 		return (sp);
 	sp->center = center;
-	sp->radius = radius;
-	sp->radius2 = radius * radius;
+	sp->radius = radius / 2;
+	sp->radius2 = sp->radius * sp->radius;
 	return (sp);
 }
 
