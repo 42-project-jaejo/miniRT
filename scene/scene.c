@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 20:00:23 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/17 01:32:29 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/17 01:36:14 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	scene_init(t_scene *scene, char *file, t_mlx *mlx_data)
 	char		**data_split;
 
 	fd = open(file, O_RDONLY);
-	scene->canvas = canvas(400, 300);
+	scene->canvas = canvas(1280, 900);
 	mlx_create(mlx_data, scene->canvas.width, scene->canvas.height);
 	data = get_next_line(fd);
 	data_split = ft_split(data, ' ');

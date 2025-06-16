@@ -6,13 +6,13 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 00:46:05 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/16 20:38:53 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/17 01:49:33 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./trace.h"
 
-t_vec3	get_cy_normal(t_cylinder *cycle, t_hit_record *rec)
+static t_vec3	get_cy_normal(t_cylinder *cycle, t_hit_record *rec)
 {
 	t_vec3	normal;
 
@@ -20,6 +20,24 @@ t_vec3	get_cy_normal(t_cylinder *cycle, t_hit_record *rec)
 	if (vec_dot(rec->normal, cycle->normal) < 0)
 		normal = vec_mult(normal, -1);
 	return (normal);
+}
+
+static t_bool	rec_cycle(t_object *world, t_ray *ray, t_hit_record *rec,
+		double t)
+{
+	t_cylinder	*cycle;
+	t_vec3		p;
+
+	p = ray_at(ray, t);
+	cycle = world->element;
+	if (t > rec->t)
+		return (FALSE);
+	rec->t = t;
+	rec->p = p;
+	rec->normal = get_cy_normal(cycle, rec);
+	set_face_normal(ray, rec);
+	rec->albedo = world->albedo;
+	return (TRUE);
 }
 
 t_bool	hit_top_circle(t_object *world, t_ray *ray, t_hit_record *rec)
@@ -42,13 +60,8 @@ t_bool	hit_top_circle(t_object *world, t_ray *ray, t_hit_record *rec)
 	p = ray_at(ray, t);
 	if (vec_length(two_vec_minus(p, top_center)) > cycle->radius)
 		return (FALSE);
-	if (t > rec->t)
+	if (!rec_cycle(world, ray, rec, t))
 		return (FALSE);
-	rec->t = t;
-	rec->p = p;
-	rec->normal = get_cy_normal(cycle, rec);
-	set_face_normal(ray, rec);
-	rec->albedo = world->albedo;
 	return (TRUE);
 }
 
@@ -74,10 +87,7 @@ t_bool	hit_btm_circle(t_object *world, t_ray *ray, t_hit_record *rec)
 		return (FALSE);
 	if (t > rec->t)
 		return (FALSE);
-	rec->t = t;
-	rec->p = p;
-	rec->normal = get_cy_normal(cycle, rec);
-	set_face_normal(ray, rec);
-	rec->albedo = world->albedo;
+	if (!rec_cycle(world, ray, rec, t))
+		return (FALSE);
 	return (TRUE);
 }
