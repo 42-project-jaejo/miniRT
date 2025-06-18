@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 20:11:06 by jaejo             #+#    #+#             */
-/*   Updated: 2025/06/17 03:17:40 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/18 18:57:17 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_object	*ft_pl_init(char **data)
 	t_vec3			normal;
 	t_color3		color;
 
-	normal = ft_char_to_vec(data[2]);
+	normal = vec_normalize(ft_char_to_vec(data[2]));
 	color = ft_char_to_vec(data[3]);
 	center = ft_char_to_vec(data[1]);
 	color = ft_trance_rgb(color);
@@ -68,7 +68,7 @@ t_object	*ft_cy_init(char **data)
 
 	color = ft_char_to_vec(data[5]);
 	center = ft_char_to_vec(data[1]);
-	normal = ft_char_to_vec(data[2]);
+	normal = vec_normalize(ft_char_to_vec(data[2]));
 	color = ft_trance_rgb(color);
 	obj = object_init(CY, cylinder_init(center, normal, ft_strtod(data[4], 0),
 				ft_strtod(data[3], 0)), color);

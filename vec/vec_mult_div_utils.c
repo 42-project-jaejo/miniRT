@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_mult_div_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaejo < jaejo@student.42gyeongsan.kr>      +#+  +:+       +#+        */
+/*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 18:42:55 by jaejo             #+#    #+#             */
-/*   Updated: 2025/05/23 19:14:22 by jaejo            ###   ########.fr       */
+/*   Updated: 2025/06/18 18:54:53 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,14 @@ t_vec3	vec_div(t_vec3 vec, double t)
 	vec.y *= 1 / t;
 	vec.z *= 1 / t;
 	return (vec);
+}
+
+t_vec3	vec_normalize(t_vec3 vec)
+{
+	double	len;
+
+	len = vec_length(vec);
+	if (len == 0)
+		return (vec3(0, 0, 0));
+	return (vec3(vec.x / len, vec.y / len, vec.z / len));
 }

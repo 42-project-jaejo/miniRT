@@ -6,27 +6,18 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 00:46:05 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/17 02:48:34 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/18 18:54:30 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./trace.h"
-
-static t_vec3	get_cy_normal(t_cylinder *cycle, t_hit_record *rec)
-{
-	t_vec3	normal;
-
-	normal = vec_unit(cycle->normal);
-	if (vec_dot(rec->normal, cycle->normal) < 0.0)
-		normal = vec_mult(normal, -1);
-	return (normal);
-}
 
 static t_bool	rec_cycle(t_object *world, t_ray *ray, t_hit_record *rec,
 		double t)
 {
 	t_cylinder	*cycle;
 	t_vec3		p;
+	t_vec3	normal;
 
 	p = ray_at(ray, t);
 	cycle = world->element;
@@ -34,7 +25,10 @@ static t_bool	rec_cycle(t_object *world, t_ray *ray, t_hit_record *rec,
 		return (FALSE);
 	rec->t = t;
 	rec->p = p;
-	rec->normal = get_cy_normal(cycle, rec);
+	normal = vec_unit(cycle->normal);
+	if (vec_dot(rec->normal, cycle->normal) < 0.0)
+		normal = vec_mult(normal, -1);
+	rec->normal = normal;
 	set_face_normal(ray, rec);
 	rec->albedo = world->albedo;
 	return (TRUE);
