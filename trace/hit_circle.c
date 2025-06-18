@@ -6,7 +6,7 @@
 /*   By: seungsch <seungsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 00:46:05 by seungsch          #+#    #+#             */
-/*   Updated: 2025/06/18 18:54:30 by seungsch         ###   ########.fr       */
+/*   Updated: 2025/06/18 18:59:39 by seungsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_bool	rec_cycle(t_object *world, t_ray *ray, t_hit_record *rec,
 {
 	t_cylinder	*cycle;
 	t_vec3		p;
-	t_vec3	normal;
+	t_vec3		normal;
 
 	p = ray_at(ray, t);
 	cycle = world->element;
